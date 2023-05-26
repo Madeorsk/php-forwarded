@@ -32,7 +32,7 @@ $originIp = Forwarded::getOriginIp(); // Getting the IP address of the origin re
 
 ### If you need more control
 
-If you cannot obtain the header content from the classic standard way, you can call directly the Forwarded header parse.
+If you cannot obtain the header content from the classic standard way, you can call directly the Forwarded header parser.
 
 ```php
 <?php
