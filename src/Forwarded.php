@@ -68,4 +68,26 @@ class Forwarded
 	{
 		return $this->forwards;
 	}
+
+
+	/**
+	 * Get the forward chain from the HTTP header found in `$_SERVER["HTTP_FORWARDED"]`.
+	 * @return Forwarded - The parsed Forwarded header.
+	 * @throws EmptyNodeNameException
+	 */
+	public static function get(): Forwarded
+	{
+		return (new Parser())->parseHttpHeader();
+	}
+
+	/**
+	 * Try to get the IP address of the origin of the request.
+	 * @return string|null - The IP address of the origin of the request, if there is one.
+	 * @throws Exceptions\NotIpAddressException
+	 * @throws EmptyNodeNameException
+	 */
+	public static function getOriginIp(): string|null
+	{
+		return self::get()?->first()?->for()?->getIp() ?? null;
+	}
 }
