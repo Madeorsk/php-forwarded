@@ -11,16 +11,6 @@ use Madeorsk\Forwarded\Exceptions\EmptyNodeNameException;
 class Parser
 {
 	/**
-	 * Parse the HTTP header found in `$_SERVER["HTTP_FORWARDED"]`.
-	 * @return Forwarded - The parsed Forwarded header.
-	 * @throws EmptyNodeNameException
-	 */
-	public function parseHttpHeader(): Forwarded
-	{
-		return $this->parse($_SERVER["HTTP_FORWARDED"]);
-	}
-
-	/**
 	 * The currently reading forwards list.
 	 * @var array
 	 */
@@ -92,6 +82,16 @@ class Parser
 	public function parse(string $headerContent): Forwarded
 	{
 		return new Forwarded($this->parseAssoc($headerContent));
+	}
+
+	/**
+	 * Parse the HTTP header found in `$_SERVER["HTTP_FORWARDED"]`.
+	 * @return Forwarded - The parsed Forwarded header.
+	 * @throws EmptyNodeNameException
+	 */
+	public function parseHttpHeader(): Forwarded
+	{
+		return $this->parse($_SERVER["HTTP_FORWARDED"]);
 	}
 
 	/**
