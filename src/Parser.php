@@ -91,7 +91,7 @@ class Parser
 	 */
 	public function parseHttpHeader(): Forwarded
 	{
-		return $this->parse($_SERVER["HTTP_FORWARDED"]);
+		return $this->parse($_SERVER["HTTP_FORWARDED"] ?? "");
 	}
 
 	/**

@@ -1,5 +1,5 @@
 {
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"name": "madeorsk/forwarded",
 	"description": "Forwarded header (RFC 7239) parsing library for PHP.",
 	"type": "library",
